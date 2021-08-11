@@ -1,0 +1,36 @@
+name: docs
+env:
+  HOME: /root
+on: 
+  workflow_dispatch:
+  # workflow_run:
+  #   workflows: ["CI"]
+  #   branches: [master]
+  #   types: 
+  #     - completed
+  push:
+    branches: 
+      - master
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    container: fastai/jekyll
+    steps:
+    - uses: actions/checkout@v2
+    - name: Create docs
+      run: |
+          pip install -Uq nbdev fastcore
+          pip install -Uq -e .[dev]
+          nbdev_build_docs
+          cd docs 
+          bundle i
+          bundle exec jekyll build --strict_front_matter
+    - name: Deploy docs to gh-pages
+      uses: JamesIves/github-pages-deploy-action@4.1.1
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: docs/_site # The folder the action should deploy.
