@@ -8,15 +8,10 @@
 
 This project generate from [nbdev](https://nbdev.fast.ai/)
 
-<details>
-  <summary>as template</summary>
-  
-  <p>
+<details><summary><b>As template</b></summary><blockquote>
 
-  ```shell
-  sed -i 's/data_tool/YOUR_LIB_NAME/g' `grep -inr data_tool -rl .`
-  mv data_tool YOUR_LIB_NAME
-  ```
-
-  </p>
-</details>
+~~~
+sed -i 's/data_tool/YOUR_LIB_NAME/g' `grep -inr data_tool -rl .`
+mv data_tool YOUR_LIB_NAME
+~~~
+</blockquote></details>
