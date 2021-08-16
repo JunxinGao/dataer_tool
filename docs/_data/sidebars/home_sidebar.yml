@@ -10,8 +10,11 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: core
+      title: Core
       url: core.html
+    - output: web,pdf
+      title: Visualize Bokeh
+      url: visualize.bokeh.html
     output: web
     title: data_tool
   output: web

@@ -2,9 +2,15 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"kwargs2str": "00_core.ipynb"}
+index = {"kwargs2str": "00_core.ipynb",
+         "sorted_dict": "00_core.ipynb",
+         "count2colors": "01_visualize.bokeh.ipynb",
+         "bar_figure": "01_visualize.bokeh.ipynb",
+         "line_figure_datetime": "01_visualize.bokeh.ipynb",
+         "get_count_data_datetime": "01_visualize.bokeh.ipynb"}
 
-modules = ["core.py"]
+modules = ["core.py",
+           "visualize/bokeh.py"]
 
 doc_url = "https://data_tool.gjx.me/"
 
