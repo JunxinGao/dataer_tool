@@ -237,6 +237,79 @@ nb_path: "nbs/00_core.ipynb"
 </div>
     {% endraw %}
 
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_count_data_datetime" class="doc_header"><code>get_count_data_datetime</code><a href="https://github.com/JunxinGao/data_tool/tree/master/data_tool/core.py#L21" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_count_data_datetime</code>(<strong><code>input_df</code></strong>, <strong><code>count_column</code></strong>, <strong><code>date_time_column</code></strong>:<code>str</code>=<em><code>None</code></em>, <strong><code>agg_method</code></strong>=<em><code>'sum'</code></em>, <strong><code>cumsum</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>resample_mode</code></strong>:<code>str</code>=<em><code>'d'</code></em>, <strong><code>extra_meta_column</code></strong>:<code>str</code>=<em><code>None</code></em>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+ <span class="s1">&#39;date&#39;</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;2000-03-01&#39;</span><span class="p">,</span>
+          <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;2000-03-02&#39;</span><span class="p">,</span>
+          <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;2000-03-03&#39;</span><span class="p">,</span>
+          <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;2000-03-06&#39;</span><span class="p">,</span>
+          <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;2000-03-07&#39;</span><span class="p">,</span>
+          <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;2000-03-08&#39;</span><span class="p">,</span>
+          <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;2000-03-09&#39;</span><span class="p">,</span>
+          <span class="mi">7</span><span class="p">:</span> <span class="s1">&#39;2000-03-10&#39;</span><span class="p">},</span>
+ <span class="s1">&#39;open&#39;</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mf">118.56</span><span class="p">,</span>
+          <span class="mi">1</span><span class="p">:</span> <span class="mf">127.0</span><span class="p">,</span>
+          <span class="mi">2</span><span class="p">:</span> <span class="mf">124.87</span><span class="p">,</span>
+          <span class="mi">3</span><span class="p">:</span> <span class="mf">126.0</span><span class="p">,</span>
+          <span class="mi">4</span><span class="p">:</span> <span class="mf">126.44</span><span class="p">,</span>
+          <span class="mi">5</span><span class="p">:</span> <span class="mf">122.87</span><span class="p">,</span>
+          <span class="mi">6</span><span class="p">:</span> <span class="mf">120.87</span><span class="p">,</span>
+          <span class="mi">7</span><span class="p">:</span> <span class="mf">121.69</span><span class="p">},</span>
+ <span class="s1">&#39;cat&#39;</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span>
+         <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span>
+         <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span>
+         <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span>
+         <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span>
+         <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span>
+         <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span>
+         <span class="mi">7</span><span class="p">:</span> <span class="s1">&#39;C&#39;</span><span class="p">}</span>
+  <span class="p">})</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 </div>
  
 

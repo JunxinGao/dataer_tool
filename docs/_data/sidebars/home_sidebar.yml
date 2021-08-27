@@ -13,8 +13,14 @@ entries:
       title: Core
       url: core.html
     - output: web,pdf
+      title: Utils
+      url: utils.html
+    - output: web,pdf
       title: Visualize Bokeh
       url: visualize.bokeh.html
+    - output: web,pdf
+      title: Simulate User
+      url: simulate.user.html
     output: web
     title: data_tool
   output: web

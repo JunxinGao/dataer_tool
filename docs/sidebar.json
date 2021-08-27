@@ -2,6 +2,8 @@
   "data_tool": {
     "Overview": "/",
     "Core": "core.html",
-    "Visualize Bokeh": "visualize.bokeh.html"
+    "Utils": "utils.html",
+    "Visualize Bokeh": "visualize.bokeh.html",
+    "Simulate User": "simulate.user.html"
   }
 }

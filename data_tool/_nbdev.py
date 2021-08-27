@@ -4,13 +4,29 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"kwargs2str": "00_core.ipynb",
          "sorted_dict": "00_core.ipynb",
+         "get_count_data_datetime": "03_utils.ipynb",
+         "BOKEH_DEFAULT_TOOLS": "01_visualize.bokeh.ipynb",
+         "BOKEH_DEFAULT_TOOLBAR_LOC": "01_visualize.bokeh.ipynb",
          "count2colors": "01_visualize.bokeh.ipynb",
          "bar_figure": "01_visualize.bokeh.ipynb",
          "line_figure_datetime": "01_visualize.bokeh.ipynb",
-         "get_count_data_datetime": "01_visualize.bokeh.ipynb"}
+         "boxplot_figure": "01_visualize.bokeh.ipynb",
+         "histogram_figure": "01_visualize.bokeh.ipynb",
+         "scatter_figure": "01_visualize.bokeh.ipynb",
+         "bubble_figure": "01_visualize.bokeh.ipynb",
+         "stacked_bar_figure": "01_visualize.bokeh.ipynb",
+         "stacked_area_figure": "01_visualize.bokeh.ipynb",
+         "pie_figure": "01_visualize.bokeh.ipynb",
+         "datatable_from_dataframe": "01_visualize.bokeh.ipynb",
+         "bar_mixed_figure": "01_visualize.bokeh.ipynb",
+         "text_figure": "01_visualize.bokeh.ipynb",
+         "api2data": "02_simulate.user.ipynb",
+         "random_user": "02_simulate.user.ipynb"}
 
 modules = ["core.py",
-           "visualize/bokeh.py"]
+           "visualize/bokeh.py",
+           "simulate/user.py",
+           "utils.py"]
 
 doc_url = "https://data_tool.gjx.me/"
 
