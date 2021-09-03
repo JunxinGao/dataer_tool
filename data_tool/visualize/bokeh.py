@@ -55,7 +55,7 @@ def bar_figure(
     data: dict, title="统计", with_label=True, y_log_multiple_thresh=1000, eps=1e-1, hide_legend=False,
     toolbar_location=BOKEH_DEFAULT_TOOLBAR_LOC, legend_orientation = "vertical", legend_location = "top_right", vertical_bar=True,
     xaxis_major_label_orientation=math.pi/8, label_angle=0, bar_width=0.8, draw_line_circle=False,
-    tools=BOKEH_DEFAULT_TOOLS, **kwargs):
+    tools=BOKEH_DEFAULT_TOOLS, x_axis_label=None, y_axis_label=None, **kwargs):
     x = [str(o) for o in data.keys()]
     y = list(data.values())
 
@@ -90,6 +90,8 @@ def bar_figure(
         p.add_layout(labels)
     p.xgrid.grid_line_color = None
     p.xaxis.major_label_orientation = xaxis_major_label_orientation
+    p.yaxis.axis_label = y_axis_label
+    p.xaxis.axis_label = x_axis_label
     return p
 
 # Cell
@@ -98,7 +100,8 @@ def line_figure_datetime(
         select_title:str=None, draw_circle=False, tooltips_metadata:list=None,
         x_name='x', y_name='y', legend_labels:list=None, tools=BOKEH_DEFAULT_TOOLS,
         use_select_figure=True, toolbar_location=BOKEH_DEFAULT_TOOLBAR_LOC, legend_alpha=0.8,
-        legend_orientation = "vertical", legend_location = "top_right", **kwargs
+        legend_orientation = "vertical", legend_location = "top_right",
+        y_axis_label=None, x_axis_label=None, **kwargs
     ):
     if isinstance(data_list, dict): data_list = [data_list]
     if isinstance(tooltips_metadata, dict): tooltips_metadata = [tooltips_metadata]
@@ -113,7 +116,8 @@ def line_figure_datetime(
         tools=tools, **kwargs
     )
     colors = count2colors(len(data_list))
-    p.yaxis.axis_label = y_name
+    p.yaxis.axis_label = y_name if y_axis_label is None else y_axis_label
+    p.xaxis.axis_label = x_name if x_axis_label is None else x_axis_label
     if use_select_figure:
         select_title = select_title if select_title is not None else f"拖动选择 {x_name} 区间"
         select = figure(
@@ -170,7 +174,7 @@ def line_figure_datetime(
 # Cell
 def boxplot_figure(
     data_df, group_column='group', value_column='value', toolbar_location=BOKEH_DEFAULT_TOOLBAR_LOC,
-    tools=BOKEH_DEFAULT_TOOLS, **kwargs):
+    tools=BOKEH_DEFAULT_TOOLS, y_axis_label=None, x_axis_label=None, **kwargs):
     # find the quartiles and IQR for each category
     groups = df.groupby(group_column)
     q1 = groups.quantile(q=0.25)
@@ -218,37 +222,41 @@ def boxplot_figure(
     p.ygrid.grid_line_color = "white"
     p.grid.grid_line_width = 2
     p.xaxis.major_label_text_font_size="16px"
+    p.yaxis.axis_label = y_axis_label
+    p.xaxis.axis_label = x_axis_label
     return p
 
 # Cell
 def histogram_figure(
-       hist, edges, title='histogram', xaxis_label='x', yaxis_label='Pr(x)',
+       hist, edges, title='histogram', x_axis_label='x', y_axis_label='y',
        fill_color='navy', toolbar_location=BOKEH_DEFAULT_TOOLBAR_LOC,
        tools=BOKEH_DEFAULT_TOOLS, **kwargs):
     p = figure(title=title, tools=tools, background_fill_color="#fafafa", toolbar_location=toolbar_location, **kwargs)
     p.quad(top=hist, bottom=0, left=edges[:-1], right=edges[1:],
            fill_color=fill_color, line_color="white", alpha=0.5)
     p.y_range.start = 0
-    p.xaxis.axis_label = xaxis_label
-    p.yaxis.axis_label = yaxis_label
+    p.xaxis.axis_label = x_axis_label
+    p.yaxis.axis_label = y_axis_label
     p.grid.grid_line_color="white"
     return p
 
 # Cell
 def scatter_figure(
-        x, y, xaxis_label='x', yaxis_label='y', title='scatter',
+        x, y, x_axis_label='x', y_axis_label='y', title='scatter',
         toolbar_location=BOKEH_DEFAULT_TOOLBAR_LOC, tools=BOKEH_DEFAULT_TOOLS, **kwargs
     ):
     assert len(x) == len(y)
     p = figure(title=title, tools=tools, toolbar_location=toolbar_location, **kwargs)
-    p.xaxis.axis_label = xaxis_label
-    p.yaxis.axis_label = yaxis_label
+    p.xaxis.axis_label = x_axis_label
+    p.yaxis.axis_label = y_axis_label
 
     p.circle(x, y, fill_alpha=0.2, size=10)
     return p
 
 # Cell
-def bubble_figure(x, y, z=None, title='bubble', tools=BOKEH_DEFAULT_TOOLS, toolbar_location=BOKEH_DEFAULT_TOOLBAR_LOC, **kwargs):
+def bubble_figure(
+    x, y, z=None, title='bubble', tools=BOKEH_DEFAULT_TOOLS, toolbar_location=BOKEH_DEFAULT_TOOLBAR_LOC,
+    y_axis_label=None, x_axis_label=None, **kwargs):
     p = figure(tools=tools, title=title, toolbar_location=toolbar_location, **kwargs)
     if z is not None:
         z = np.array(z)
@@ -261,13 +269,16 @@ def bubble_figure(x, y, z=None, title='bubble', tools=BOKEH_DEFAULT_TOOLS, toolb
         p.scatter(x, y, fill_alpha=0.6, radius=z)
     else:
         p.scatter(x, y, fill_alpha=0.6)
+    p.yaxis.axis_label = y_axis_label
+    p.xaxis.axis_label = x_axis_label
 
     return p
 
 # Cell
 def stacked_bar_figure(
     data:dict, x_key, y_keys:list, title='stacked bar',
-    toolbar_location=BOKEH_DEFAULT_TOOLBAR_LOC, tools=BOKEH_DEFAULT_TOOLS, **kwargs
+    toolbar_location=BOKEH_DEFAULT_TOOLBAR_LOC, tools=BOKEH_DEFAULT_TOOLS,
+    y_axis_label=None, x_axis_label=None, **kwargs
 ):
     p = figure(title=title, toolbar_location=toolbar_location, tools=tools, x_range=data[x_key], **kwargs)
 
@@ -280,12 +291,15 @@ def stacked_bar_figure(
     p.outline_line_color = None
     p.legend.location = "top_left"
     p.legend.orientation = "horizontal"
+    p.yaxis.axis_label = y_axis_label
+    p.xaxis.axis_label = x_axis_label
     return p
 
 # Cell
 def stacked_area_figure(
     df, stackers:list, title='stacked_area', tools=BOKEH_DEFAULT_TOOLS,
-    toolbar_location=BOKEH_DEFAULT_TOOLBAR_LOC, **kwargs):
+    toolbar_location=BOKEH_DEFAULT_TOOLBAR_LOC,
+    y_axis_label=None, x_axis_label=None, **kwargs):
     p = figure(x_range=(0, len(df)-1), title=title, tools=tools, toolbar_location=toolbar_location, **kwargs)
     p.grid.minor_grid_line_color = '#eeeeee'
     if df.index.name is None: df.index.name = '_index_col'
@@ -294,6 +308,8 @@ def stacked_area_figure(
 
     # reverse the legend entries to match the stacked order
     p.legend.items.reverse()
+    p.yaxis.axis_label = y_axis_label
+    p.xaxis.axis_label = x_axis_label
     return p
 
 # Cell
@@ -345,22 +361,22 @@ def datatable_from_dataframe(df, **kwargs):
 def bar_mixed_figure(df, group_keys:list, y_column_name, label_angle=0,
                     agg_method='sum', tools=BOKEH_DEFAULT_TOOLS, title='mixed bar',
                     toolbar_location=BOKEH_DEFAULT_TOOLBAR_LOC, draw_mean_line=False, line_alpha=0.8,
-                    line_legend_orientation = "vertical", line_legend_location = "top_center",
-                    label_offset_kwargs={'x_offset':-8, 'y_offset':2},
-                    line_legend_label="平均值", line_color="#4292c6", hide_line_legend=True, **kwargs):
-    assert len(group_keys) == 2
-    sec_group_keys = list(df[group_keys[-1]].unique())
-    palette = count2colors(len(sec_group_keys))
+                    legend_orientation = "vertical", legend_location = "top_center",
+                    label_offset_kwargs={'x_offset':-8, 'y_offset':2}, y_axis_label=None, x_axis_label=None,
+                    line_legend_label="平均值", line_color="#4292c6", hide_legend=True, **kwargs):
+    bar_group_keys = list(df[group_keys[-1]].unique())
+    palette = count2colors(len(bar_group_keys))
     grouped_df = df.groupby(group_keys).agg(agg_method)
+    bar_legend_values = list(grouped_df.reset_index()[group_keys[-1]].values)
     x = list(grouped_df.index)
     counts = list(grouped_df[y_column_name].values)
 
-    source = ColumnDataSource(data=dict(x=x, counts=counts))
+    source = ColumnDataSource(data=dict(x=x, counts=counts, bar_legend=bar_legend_values))
 
     p = figure(x_range=FactorRange(*x), title=title, toolbar_location=toolbar_location, tools=tools, **kwargs)
 
-    p.vbar(x='x', top='counts', width=0.9, source=source, line_color="white",
-        fill_color=factor_cmap('x', palette=palette, factors=sec_group_keys, start=1, end=2))
+    p.vbar(x='x', top='counts', width=0.9, source=source, line_color="white", legend_field='bar_legend',
+        fill_color=factor_cmap('x', palette=palette, factors=bar_group_keys, start=len(group_keys)-1, end=len(group_keys)))
     labels = LabelSet(
                 x='x', y='counts', text='counts', level='glyph', angle=label_angle,
                 source=source, render_mode='canvas', text_font_size="9pt", **label_offset_kwargs)
@@ -376,14 +392,16 @@ def bar_mixed_figure(df, group_keys:list, y_column_name, label_angle=0,
             fill_color='white', size=6, line_color='black', legend_label=line_legend_label, alpha=line_alpha
         )
         p.add_tools(HoverTool(tooltips=[('mean', '@y')]))
-        p.legend.orientation = line_legend_orientation
-        p.legend.location = line_legend_location
-        if hide_line_legend: p.legend.visible = False
+    p.legend.orientation = legend_orientation
+    p.legend.location = legend_location
+    if hide_legend: p.legend.visible = False
 
     p.y_range.start = 0
     p.x_range.range_padding = 0.1
     p.xaxis.major_label_orientation = 1
     p.xgrid.grid_line_color = None
+    p.yaxis.axis_label = y_axis_label
+    p.xaxis.axis_label = x_axis_label
     return p
 
 # Cell

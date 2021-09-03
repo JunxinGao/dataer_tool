@@ -4,7 +4,6 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"kwargs2str": "00_core.ipynb",
          "sorted_dict": "00_core.ipynb",
-         "get_count_data_datetime": "03_utils.ipynb",
          "BOKEH_DEFAULT_TOOLS": "01_visualize.bokeh.ipynb",
          "BOKEH_DEFAULT_TOOLBAR_LOC": "01_visualize.bokeh.ipynb",
          "count2colors": "01_visualize.bokeh.ipynb",
@@ -21,7 +20,8 @@ index = {"kwargs2str": "00_core.ipynb",
          "bar_mixed_figure": "01_visualize.bokeh.ipynb",
          "text_figure": "01_visualize.bokeh.ipynb",
          "api2data": "02_simulate.user.ipynb",
-         "random_user": "02_simulate.user.ipynb"}
+         "random_user": "02_simulate.user.ipynb",
+         "get_count_data_datetime": "03_utils.ipynb"}
 
 modules = ["core.py",
            "visualize/bokeh.py",
