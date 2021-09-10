@@ -1,7 +1,7 @@
-repository: JunxinGao/data_tool
+repository: JunxinGao/dataer_tool
 output: web
-topnav_title: data_tool
-site_title: data_tool
+topnav_title: dataer_tool
+site_title: dataer_tool
 company_name: Junxin Gao
 description: Learn DeZero Book
 # Set to false to disable KaTeX math

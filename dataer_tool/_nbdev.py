@@ -28,8 +28,8 @@ modules = ["core.py",
            "simulate/user.py",
            "utils.py"]
 
-doc_url = "https://data_tool.gjx.me/"
+doc_url = "https://dataer_tool.gjx.me/"
 
-git_url = "https://github.com/JunxinGao/data_tool/tree/master/"
+git_url = "https://github.com/JunxinGao/dataer_tool/tree/master/"
 
 def custom_doc_links(name): return None

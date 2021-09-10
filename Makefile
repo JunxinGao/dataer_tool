@@ -2,11 +2,11 @@
 SHELL := /bin/bash
 SRC = $(wildcard nbs/*.ipynb)
 
-all: data_tool docs
+all: dataer_tool docs
 
-data_tool: $(SRC)
+dataer_tool: $(SRC)
 	nbdev_build_lib
-	touch data_tool
+	touch dataer_tool
 
 sync:
 	nbdev_update_lib

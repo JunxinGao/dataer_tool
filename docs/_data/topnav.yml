@@ -2,7 +2,7 @@ topnav:
 - title: Topnav
   items:
     - title: github
-      external_url: https://github.com/JunxinGao/data_tool/tree/master/
+      external_url: https://github.com/JunxinGao/dataer_tool/tree/master/
 
 #Topnav dropdowns
 topnav_dropdowns:

@@ -1,8 +1,8 @@
-# data_tool
+# dataer_tool
 > the tool for dataer
 
 
-![CI](https://github.com/junxingao/data_tool/workflows/CI/badge.svg) ![docs](https://github.com/junxingao/data_tool/workflows/docs/badge.svg)
+![CI](https://github.com/junxingao/dataer_tool/workflows/CI/badge.svg) ![docs](https://github.com/junxingao/dataer_tool/workflows/docs/badge.svg)
 
 # Develop
 
@@ -23,7 +23,7 @@ This project generate from [nbdev](https://nbdev.fast.ai/)
 <details><summary><b>As template</b></summary><blockquote>
 
 ~~~
-sed -i 's/data_tool/YOUR_LIB_NAME/g' `grep -inr data_tool -rl .`
-mv data_tool YOUR_LIB_NAME
+sed -i 's/dataer_tool/YOUR_LIB_NAME/g' `grep -inr dataer_tool -rl .`
+mv dataer_tool YOUR_LIB_NAME
 ~~~
 </blockquote></details>

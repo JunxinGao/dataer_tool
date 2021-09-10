@@ -22,6 +22,6 @@ entries:
       title: Simulate User
       url: simulate.user.html
     output: web
-    title: data_tool
+    title: dataer_tool
   output: web
   title: Sidebar

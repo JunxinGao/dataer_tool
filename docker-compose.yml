@@ -1,6 +1,6 @@
 version: "3"
 services:
-  data_tool_study: &data_tool_study
+  dataer_tool_study: &dataer_tool_study
     build: .
     restart: unless-stopped
     working_dir: /data
@@ -18,19 +18,19 @@ services:
       - .:/data/
 
   notebook:
-    <<: *data_tool_study
+    <<: *dataer_tool_study
     command: ./run.sh
     ports:
       - "8088:8080"
       - "8022:22"
 
   watcher:
-    <<: *data_tool_study
+    <<: *dataer_tool_study
     command: watchmedo shell-command --command nbdev_build_docs --pattern *.ipynb --recursive --drop
     network_mode: host # for GitHub Codespaces https://github.com/features/codespaces/
 
   jekyll:
-    <<: *data_tool_study
+    <<: *dataer_tool_study
     ports:
      - "4088:4000"
     command: >
