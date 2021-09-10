@@ -1,0 +1,9 @@
+{
+  "dataer_tool": {
+    "Overview": "/",
+    "Core": "core.html",
+    "Utils": "utils.html",
+    "Visualize Bokeh": "visualize.bokeh.html",
+    "Simulate User": "simulate.user.html"
+  }
+}
