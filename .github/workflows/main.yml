@@ -28,6 +28,17 @@ jobs:
     - name: Check if there is no diff library/notebooks
       run: |
         if [ -n "$(nbdev_diff_nbs)" ]; then echo -e "!!! Detected difference between the notebooks and the library"; false; fi
+    - name: Install dependencies
+      run: |
+        pip install setuptools wheel twine
+    - name: Build package
+      run: |
+        make dist
+    - name: Publish a Python distribution to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        user: __token__
+        password: ${{ secrets.PYPI_API_TOKEN }}
     # - name: Run tests
     #   run: |
     #     nbdev_test_nbs
