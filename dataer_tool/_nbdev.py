@@ -21,7 +21,8 @@ index = {"kwargs2str": "00_core.ipynb",
          "text_figure": "01_visualize.bokeh.ipynb",
          "api2data": "02_simulate.user.ipynb",
          "random_user": "02_simulate.user.ipynb",
-         "get_count_data_datetime": "03_utils.ipynb"}
+         "get_count_data_datetime": "03_utils.ipynb",
+         "fmt_str_in_file": "03_utils.ipynb"}
 
 modules = ["core.py",
            "visualize/bokeh.py",
