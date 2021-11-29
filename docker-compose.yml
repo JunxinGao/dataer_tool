@@ -21,8 +21,8 @@ services:
     <<: *dataer_tool_study
     command: ./run.sh
     ports:
-      - "8088:8080"
-      - "8022:22"
+      - "8188:8080"
+      - "8122:22"
 
   watcher:
     <<: *dataer_tool_study
@@ -32,7 +32,7 @@ services:
   jekyll:
     <<: *dataer_tool_study
     ports:
-     - "4088:4000"
+     - "4188:4000"
     command: >
      bash -c "pip install .
      && nbdev_build_docs && cd docs

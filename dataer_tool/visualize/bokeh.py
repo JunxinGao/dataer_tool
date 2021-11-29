@@ -78,14 +78,14 @@ def bar_figure(
     if with_label:
         if vertical_bar:
             labels = LabelSet(
-                x='x', y='y', text='y', level='glyph', angle=label_angle,
+                x='x', y='y', text='y', angle=label_angle,
                 x_offset=-8, y_offset=2, source=source, render_mode='canvas', text_font_size="9pt")
             if draw_line_circle:
                 p.line(x='x', y='y', source=source, line_color='#4292c6')
                 p.circle(x='x', y='y', fill_color='white', size=6, source=source, line_color='black')
         else:
             labels = LabelSet(
-                x='y', y='x', text='y', level='glyph', angle=label_angle,
+                x='y', y='x', text='y', angle=label_angle,
                 x_offset=2, y_offset=-8, source=source, render_mode='canvas', text_font_size="9pt")
         p.add_layout(labels)
     p.xgrid.grid_line_color = None
@@ -378,7 +378,7 @@ def bar_mixed_figure(df, group_keys:list, y_column_name, label_angle=0,
     p.vbar(x='x', top='counts', width=0.9, source=source, line_color="white", legend_field='bar_legend',
         fill_color=factor_cmap('x', palette=palette, factors=bar_group_keys, start=len(group_keys)-1, end=len(group_keys)))
     labels = LabelSet(
-                x='x', y='counts', text='counts', level='glyph', angle=label_angle,
+                x='x', y='counts', text='counts', angle=label_angle,
                 source=source, render_mode='canvas', text_font_size="9pt", **label_offset_kwargs)
     p.add_layout(labels)
     if draw_mean_line:
