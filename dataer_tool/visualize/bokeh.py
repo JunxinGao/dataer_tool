@@ -79,14 +79,14 @@ def bar_figure(
         if vertical_bar:
             labels = LabelSet(
                 x='x', y='y', text='y', angle=label_angle,
-                x_offset=-8, y_offset=2, source=source, render_mode='canvas', text_font_size="9pt")
+                x_offset=-8, y_offset=2, source=source, render_mode='css', text_font_size="9pt")
             if draw_line_circle:
                 p.line(x='x', y='y', source=source, line_color='#4292c6')
                 p.circle(x='x', y='y', fill_color='white', size=6, source=source, line_color='black')
         else:
             labels = LabelSet(
                 x='y', y='x', text='y', angle=label_angle,
-                x_offset=2, y_offset=-8, source=source, render_mode='canvas', text_font_size="9pt")
+                x_offset=2, y_offset=-8, source=source, render_mode='css', text_font_size="9pt")
         p.add_layout(labels)
     p.xgrid.grid_line_color = None
     p.xaxis.major_label_orientation = xaxis_major_label_orientation
@@ -339,7 +339,7 @@ def pie_figure(data, title='pie', tools=BOKEH_DEFAULT_TOOLS, toolbar_location=BO
         start_angle=cumsum('angle', include_zero=True), end_angle=cumsum('angle'),
         line_color="white", fill_color='color', legend_field='x', source=df)
     # labels = LabelSet(x="cos", y="sin", y_offset=0, text='percentage', text_align="center", angle=0, source=ColumnDataSource(df), render_mode='canvas')
-    labels = LabelSet(x=0, y=1, y_offset=0, text='percentage', text_align="center", angle=cumsum('angle', include_zero=True), source=ColumnDataSource(df), render_mode='canvas')
+    labels = LabelSet(x=0, y=1, y_offset=0, text='percentage', text_align="center", angle=cumsum('angle', include_zero=True), source=ColumnDataSource(df), render_mode='css')
     p.add_layout(labels)
 
     p.axis.axis_label=None
@@ -379,7 +379,7 @@ def bar_mixed_figure(df, group_keys:list, y_column_name, label_angle=0,
         fill_color=factor_cmap('x', palette=palette, factors=bar_group_keys, start=len(group_keys)-1, end=len(group_keys)))
     labels = LabelSet(
                 x='x', y='counts', text='counts', angle=label_angle,
-                source=source, render_mode='canvas', text_font_size="9pt", **label_offset_kwargs)
+                source=source, render_mode='css', text_font_size="9pt", **label_offset_kwargs)
     p.add_layout(labels)
     if draw_mean_line:
         line_data = df.groupby(group_keys[0])[y_column_name].mean().to_dict()
